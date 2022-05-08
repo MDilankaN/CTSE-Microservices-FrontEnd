@@ -144,7 +144,7 @@ function register() {
                   onClick={() => validateData()}>Login</button>
           </div>
 
-          <div className='w-full text-right'>
+          <div className='w-full text-center md:text-right'>
               <Link href={'/login'} passHref>Already a User Login From Here...!!</Link> </div>
       </div></>
   )

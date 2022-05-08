@@ -64,7 +64,7 @@ function login() {
                   type='submit'
                   onClick={() => validateData()}>Login</button>
           </div>
-          <div className='w-full text-right'>
+          <div className='w-full text-center md:text-right'>
               <Link href={'/register'} passHref>New User Register From Here...!!</Link> </div>
       </div></>
   )
