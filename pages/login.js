@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {validateEmail} from '../Shared/Helper'
 import Link from 'next/link';
+import Navbar from '../Components/Navbar';
 
 function login() {
 
@@ -39,31 +40,33 @@ function login() {
     };
 
   return (
-    <div className='m-auto justfy-center w-1/2'>
-        <h1 className='m-2 text-2xl'>Login</h1>
-        <div className=' flex flex-col'>
-            <input 
-                className='m-2 rounded-md border-2 border-blue-400 p-2' 
-                value={email} 
-                type='text' 
-                placeholder='Email'
-                onChange={(e) => setEmail(e.target.value)}/>
-                {emailError && <p>{emailError}</p>}
-            <input 
-                className='m-2 rounded-md border-2 border-blue-400 p-2' 
-                value={pwd} 
-                type='password' 
-                placeholder='Password'
-                onChange={(e) => setPwd(e.target.value)}/>
-                {pwdError && <p>{pwdError}</p>}
-            <button 
-                className=' text-white mx-16 my-2 p-2 border-2 bg-blue-600 rounded-lg border-blue-500' 
-                type='submit' 
-                onClick={() => validateData()}>Login</button>
-        </div>
-        <div className='w-full text-right' >
-        <Link href={'/register'} passHref>New User Register From Here...!!</Link> </div>
-    </div>
+      <>
+        <Navbar />
+        <div className='m-auto justfy-center w-1/2'>
+          <h1 className='m-2 text-2xl'>Login</h1>
+          <div className=' flex flex-col'>
+              <input
+                  className='m-2 rounded-md border-2 border-blue-400 p-2'
+                  value={email}
+                  type='text'
+                  placeholder='Email'
+                  onChange={(e) => setEmail(e.target.value)} />
+              {emailError && <p>{emailError}</p>}
+              <input
+                  className='m-2 rounded-md border-2 border-blue-400 p-2'
+                  value={pwd}
+                  type='password'
+                  placeholder='Password'
+                  onChange={(e) => setPwd(e.target.value)} />
+              {pwdError && <p>{pwdError}</p>}
+              <button
+                  className=' text-white mx-16 my-2 p-2 border-2 bg-blue-600 rounded-lg border-blue-500'
+                  type='submit'
+                  onClick={() => validateData()}>Login</button>
+          </div>
+          <div className='w-full text-right'>
+              <Link href={'/register'} passHref>New User Register From Here...!!</Link> </div>
+      </div></>
   )
 }
 

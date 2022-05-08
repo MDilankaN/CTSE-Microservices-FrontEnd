@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Navbar from '../Components/Navbar';
 
 function profile() {
     
@@ -67,51 +68,53 @@ function profile() {
     }
 
   return (
-    <div className='m-auto justfy-center w-1/2'>
-        <div className='m-2 text-2xl'>
-            Profile
-            {/* Profile Image */}
-        </div>
-        <div className=' flex flex-col'>
-            <input 
-                className='m-2 rounded-md border-2 border-blue-400 p-2' 
-                value={fname} 
-                type='text' 
-                placeholder='First Name'
-                onChange={(e) => validateData(e.target.value, 'FirstName')}/>
-            <input 
-                className='m-2 rounded-md border-2 border-blue-400 p-2' 
-                value={lname} 
-                type='text' 
-                placeholder='Last Name'
-                onChange={(e) => validateData(e.target.value, 'LastName')}/>
-            <input 
-                className='m-2 rounded-md border-2 border-blue-400 p-2' 
-                value={age} 
-                type='text' 
-                placeholder='Age'
-                onChange={(e) => validateData(e.target.value, 'Age')}/>
-            <input 
-                className='m-2 rounded-md border-2 border-blue-400 p-2' 
-                value={address} 
-                type='text' 
-                placeholder='Address'
-                onChange={(e) => validateData(e.target.value, 'Address')}/>
-            <input 
-                className='m-2 rounded-md border-2 border-blue-400 p-2' 
-                value={email} 
-                type='text' 
-                placeholder='email'
-                onChange={(e) => validateData(e.target.value, 'email')}/>
+      <>
+      <Navbar />
+        <div className='m-auto justfy-center w-1/2'>
+          <div className='m-2 text-2xl'>
+              Profile
+              {/* Profile Image */}
+          </div>
+          <div className=' flex flex-col'>
+              <input
+                  className='m-2 rounded-md border-2 border-blue-400 p-2'
+                  value={fname}
+                  type='text'
+                  placeholder='First Name'
+                  onChange={(e) => validateData(e.target.value, 'FirstName')} />
+              <input
+                  className='m-2 rounded-md border-2 border-blue-400 p-2'
+                  value={lname}
+                  type='text'
+                  placeholder='Last Name'
+                  onChange={(e) => validateData(e.target.value, 'LastName')} />
+              <input
+                  className='m-2 rounded-md border-2 border-blue-400 p-2'
+                  value={age}
+                  type='text'
+                  placeholder='Age'
+                  onChange={(e) => validateData(e.target.value, 'Age')} />
+              <input
+                  className='m-2 rounded-md border-2 border-blue-400 p-2'
+                  value={address}
+                  type='text'
+                  placeholder='Address'
+                  onChange={(e) => validateData(e.target.value, 'Address')} />
+              <input
+                  className='m-2 rounded-md border-2 border-blue-400 p-2'
+                  value={email}
+                  type='text'
+                  placeholder='email'
+                  onChange={(e) => validateData(e.target.value, 'email')} />
 
-            {/* <input className='m-2 rounded-md border-2 border-fuchsia-500 p-2' value={password} type='password' placeholder='password'/>
-            <input className='m-2 rounded-md border-2 border-fuchsia-500 p-2' value={rePassword} type='password' placeholder='password'/> */}
-            <button 
-                className=' text-white mx-16 my-2 p-2 border-2 bg-blue-600 rounded-lg border-blue-500' 
-                type='submit' 
-                onClick={() => submitdata()}>Update</button>
-        </div>
-    </div>
+              {/* <input className='m-2 rounded-md border-2 border-fuchsia-500 p-2' value={password} type='password' placeholder='password'/>
+    <input className='m-2 rounded-md border-2 border-fuchsia-500 p-2' value={rePassword} type='password' placeholder='password'/> */}
+              <button
+                  className=' text-white mx-16 my-2 p-2 border-2 bg-blue-600 rounded-lg border-blue-500'
+                  type='submit'
+                  onClick={() => submitdata()}>Update</button>
+          </div>
+      </div></>
   )
 }
 
