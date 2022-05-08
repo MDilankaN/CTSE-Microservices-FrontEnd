@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import {validateEmail} from '../Shared/Helper'
+import Link from 'next/link';
 
 function login() {
 
@@ -60,6 +61,8 @@ function login() {
                 type='submit' 
                 onClick={() => validateData()}>Login</button>
         </div>
+        <div className='w-full text-right' >
+        <Link href={'/register'} passHref>New User Register From Here...!!</Link> </div>
     </div>
   )
 }
