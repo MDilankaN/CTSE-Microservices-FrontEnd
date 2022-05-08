@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Navbar from '../Components/Navbar';
+import Notification from '../Components/Notification';
 
 function profile() {
     
@@ -70,6 +71,7 @@ function profile() {
   return (
       <>
       <Navbar />
+      <Notification Header={'Hello'} Message={'This is a message'} type={'hello'} Show={true}/>
         <div className='m-auto justfy-center w-1/2'>
           <div className='m-2 text-2xl'>
               Profile
