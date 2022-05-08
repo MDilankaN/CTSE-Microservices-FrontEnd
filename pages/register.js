@@ -84,7 +84,7 @@ function register() {
   return (
       <>
       <Navbar />
-      <div className='m-auto justfy-center w-1/2'>
+      <div className='m-auto justfy-center w-10/12  md:w-1/2'>
           <h1 className='m-2 text-2xl'>Register</h1>
           <div className=' flex flex-col'>
               <input

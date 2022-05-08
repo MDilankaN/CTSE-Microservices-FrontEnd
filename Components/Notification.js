@@ -12,6 +12,9 @@ function Notification({Header,Message,type, Show}) {
     setdisplay(false);
   }
 
+  setTimeout(() => {
+    setdisplay(false);
+  }, 5000);
 
 
   return (
