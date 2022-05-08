@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Link from 'next/link';
 import {validateEmail} from '../Shared/Helper'
 
-function login() {
+function register() {
 
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
@@ -147,4 +147,4 @@ function login() {
   )
 }
 
-export default login
+export default register
