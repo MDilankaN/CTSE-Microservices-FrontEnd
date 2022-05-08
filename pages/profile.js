@@ -70,6 +70,7 @@ function profile() {
     <div className='m-auto justfy-center w-1/2'>
         <div className='m-2 text-2xl'>
             Profile
+            {/* Profile Image */}
         </div>
         <div className=' flex flex-col'>
             <input 
