@@ -9,6 +9,6 @@ export const USER_TYPES ={
 }
 
 export const STORE_TYPES ={
-    GET_ITEMS:'GET_ITEMS',
+    SET_ITEMS:'SET_ITEMS',
     UPDATE_ITEM:'UPDATE_ITEM',
 }

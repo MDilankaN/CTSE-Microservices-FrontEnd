@@ -7,7 +7,7 @@ const initialState = {
 
 const itemReducer = (state = initialState, action) => {
   switch (action.type) {
-    case STORE_TYPES.GET_ITEMS:
+    case STORE_TYPES.SET_ITEMS:
       return {
         ...state,
         item: action.payload,
