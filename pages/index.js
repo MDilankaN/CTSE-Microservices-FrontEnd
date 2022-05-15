@@ -13,7 +13,7 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (items.length === 0) {
+    if (items?.length === 0) {
       getItemList();
     }
   }, [items]);
@@ -26,7 +26,6 @@ export default function Home() {
     });
   };
 
-  console.log(items[0]);
   console.log(items?.length);
 
   return (
