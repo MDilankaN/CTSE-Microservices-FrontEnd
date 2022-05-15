@@ -12,3 +12,7 @@ export const STORE_TYPES ={
     SET_ITEMS:'SET_ITEMS',
     UPDATE_ITEM:'UPDATE_ITEM',
 }
+export const CART_TYPES ={
+    SET_ITEMS:'SET_ITEMS',
+    UPDATE_ITEM:'UPDATE_ITEM',
+}
