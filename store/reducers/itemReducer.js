@@ -10,7 +10,7 @@ const itemReducer = (state = initialState, action) => {
     case STORE_TYPES.SET_ITEMS:
       return {
         ...state,
-        items: action.payload,
+        items: action.payload?.items,
         loading: false,
       };
 

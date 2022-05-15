@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
+import privateRoute from '../hoc/Authenticate'
 
 function cart() {
   return (
@@ -10,4 +11,4 @@ function cart() {
   )
 }
 
-export default cart
+export default privateRoute(cart)

@@ -13,7 +13,7 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(items?.length === 0){
+    if (items.length === 0) {
       getItemList();
     }
   }, [items]);
@@ -36,9 +36,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <div className="m-auto">
-      {items && items[0]?.map((item)=>(
-        <ItemCard data={item}/>
-      ))}
+        {items && items?.map((item) => <ItemCard data={item} />)}
       </div>
     </div>
   );
