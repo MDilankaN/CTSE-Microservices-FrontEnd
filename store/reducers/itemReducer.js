@@ -1,7 +1,7 @@
 import { STORE_TYPES } from "../types";
 
 const initialState = {
-  item: [],
+  items: {},
   loading: true,
 };
 
@@ -10,7 +10,7 @@ const itemReducer = (state = initialState, action) => {
     case STORE_TYPES.SET_ITEMS:
       return {
         ...state,
-        item: action.payload,
+        items: action.payload,
         loading: false,
       };
 
