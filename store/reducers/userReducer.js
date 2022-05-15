@@ -12,7 +12,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: action?.payload?.isAuthenticated,
-        user: action.payload,
+        user: action.payload?.user,
         loading: false,
       };
 

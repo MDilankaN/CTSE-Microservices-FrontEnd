@@ -5,14 +5,14 @@ import { useSelector } from 'react-redux';
 
 function Navbar() {
   
-  const { user } = useSelector((store) => store?.user);
+  const { isAuthenticated } = useSelector((store) => store?.user);
 
   useEffect(() => {
-    setloggedIn(user?.isAuthenticated);
-  }, [user])
+    setloggedIn(isAuthenticated);
+  }, [isAuthenticated])
   
 
-  const [loggedIn, setloggedIn] = useState(user?.isAuthenticated)
+  const [loggedIn, setloggedIn] = useState(isAuthenticated)
 
   return (
     <div className='flex flex-row px-8 py-4 bg-sky-700 justify-between text-white mb-4'>

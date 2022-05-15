@@ -1,26 +1,25 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { ROUTES } from "../../shared/constants";
 
 export default function privateRoute(ComposedComponent, roles = [""]) {
   const Authentication = (props) => {
     const [loaded, setLoaded] = useState(false);
-    const { authenticated, user } = useSelector((store) => store?.user);
+    const { isAuthenticated } = useSelector((store) => store?.user);
     const router = useRouter();
 
     useEffect(() => {
       _checkAndRedirect();
-    }, [authenticated]);
+    }, [isAuthenticated]);
 
     const _checkAndRedirect = async () => {
-      if (authenticated) {
+      if (isAuthenticated) {
         setLoaded(true);
         return;
       }
-      if (authenticated === false) {
+      if (isAuthenticated === false) {
         setLoaded(true);
-        router.push(`/${ROUTES.LOGIN}`); ///login
+        router.push(`/login`); ///login
         return;
       }
     };
@@ -31,7 +30,7 @@ export default function privateRoute(ComposedComponent, roles = [""]) {
             <div className="m-auto">loading</div>
           </div>
         )}
-        {loaded && authenticated ? <ComposedComponent {...props} /> : null}
+        {loaded && isAuthenticated ? <ComposedComponent {...props} /> : null}
       </div>
     );
   };

@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar";
 import Notification from "../Components/Notification";
 import { USER_TYPES } from "../store/types";
 import { updateUser, uploadImage } from "./api/hello";
+import privateRoute from '../hoc/Authenticate'
 
 function profile() {
   const { user } = useSelector((store) => store?.user);
@@ -12,15 +13,15 @@ function profile() {
 
   console.log(user);
 
-  const [name, setName] = useState(user?.user?.name);
-  const [age, setAge] = useState(user?.user?.age);
-  const [address, setAddress] = useState(user?.user?.address);
-  const [email, setEmail] = useState(user?.user?.email);
+  const [name, setName] = useState(user?.name);
+  const [age, setAge] = useState(user?.age);
+  const [address, setAddress] = useState(user?.address);
+  const [email, setEmail] = useState(user?.email);
   // const [password, setPassword] = useState('');
   // const [rePassword, setRePassword] = useState('');
 
   const [image, setImage] = useState(null);
-  const [createObjectURL, setCreateObjectURL] = useState(null);
+  const [createObjectURL, setCreateObjectURL] = useState(user?.imageUrl);
 
   const [nameError, setNameError] = useState("");
 
@@ -98,6 +99,14 @@ function profile() {
 
   const deleteAccount = async ( ) =>{
     const res = await deleteUser(user?.user?.id);
+  }
+  const userLogout = ( ) =>{
+    dispatch({
+      type: USER_TYPES.SET_USER,
+      payload: {
+        isAuthenticated: false,
+      },
+    });
   }
 
   return (
@@ -178,10 +187,17 @@ function profile() {
           >
             Delete
           </button>
+          <button
+            className=" text-white mx-16 my-2 p-2 border-2 bg-green-700 rounded-lg border-green-900"
+            type="submit"
+            onClick={() => userLogout()}
+          >
+            Logout
+          </button>
         </div>
       </div>
     </>
   );
 }
 
-export default profile;
+export default privateRoute(profile);
