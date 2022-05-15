@@ -1,13 +1,31 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import axios from "axios";
 
-import fs from "fs";
+export async function registerUser(userData) {
+  const res = await axios
+    .post("http://localhost:8082/api/v1/useradd", userData)
+    .then(function (response) {
+      if (response?.status === 200) {
+        console.log("hello");
+        return true;
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-export const config = {
-  api: {
-    bodyParser: false
-  }
-};
+    return res;
+}
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+export async function loginUser(userData) {
+  await axios
+    .post("http://localhost:8082/api/v1/validate", userData)
+    .then(function (response) {
+      if (response?.status === 200) {
+        console.log(response);
+        return true;
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }

@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { validateEmail } from "../Shared/Helper";
 import Navbar from "../Components/Navbar";
-import { useDispatch } from "react-redux";
-import { USER_TYPES } from "../store/types";
+import { registerUser } from "./api/hello";
+import Notification from "../Components/Notification";
 
 function register() {
-  const dispatch = useDispatch();
-
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [rePwd, setRePwd] = useState("");
@@ -23,6 +21,13 @@ function register() {
   const [lnameError, setLNameError] = useState("");
   const [ageError, setAgeError] = useState("");
   const [addressError, setAddressError] = useState("");
+
+  const [notification, setNotification] = useState({
+    Header: "",
+    Message: "",
+    type: "",
+    Show: false,
+  });
 
   const validateData = () => {
     if (email === "") {
@@ -71,38 +76,35 @@ function register() {
     submitData();
   };
 
-  const submitData = () => {
+  const submitData = async () => {
     if (
       emailError === "" &&
-    //   rePwdError === "" &&
+      //   rePwdError === "" &&
       fnameError === "" &&
       lnameError === "" &&
       ageError === "" &&
       addressError === ""
     ) {
-      console.log("Login method", email, " ", pwd, '', rePwd);
-
-      //register method
-      //notification
-      //page forward
-
       let userdata = {
-        email: email,
-        pwd: pwd,
-        fname: fname,
-        lname: lname,
-        age: age,
         address: address,
-        profileImage: ''
+        age: age,
+        email: email,
+        name: fname + " " + lname,
+        password: pwd,
+        username: email,
       };
-
-      dispatch({
-        type: USER_TYPES.SET_USER,
-        payload: {
-          isAuthenticated: true,
-          user: userdata,
-        },
-      });
+      let status = await registerUser(userdata);
+      if (status) {
+        setNotification({
+          Header: "Success..!!",
+          Message: "Registered Successfully",
+          type: "success",
+          Show: true,
+        }); // Notifcation is not showing
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 3000);
+      }
     } else {
       return;
     }
@@ -111,6 +113,14 @@ function register() {
   return (
     <>
       <Navbar />
+
+      <Notification
+        Header={notification.Header}
+        Message={notification.Message}
+        type={notification.type}
+        Show={notification.Show}
+      />
+
       <div className="m-auto justfy-center w-10/12  md:w-1/2">
         <h1 className="m-2 text-2xl">Register</h1>
         <div className=" flex flex-col">
