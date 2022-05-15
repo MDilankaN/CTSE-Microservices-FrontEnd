@@ -26,6 +26,15 @@ export default function Home() {
     });
   };
 
+  const sampleData = {
+    description: "Samsung Galaxy Note 10+ N975U1 ATT T-Mob Verizon Factory Unlocked - VERY GOOD -",
+    id: 8,
+    img_url: 'https://i.ebayimg.com/images/g/FX8AAOSwgCpiVdRz/s-l500.jpg',
+    name: "Samsung Galaxy Note 10+",
+    price: "US $364.99",
+    stock: 1,
+  };
+
   console.log(items?.length);
 
   return (
@@ -35,6 +44,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <div className="m-auto">
+        <ItemCard data={sampleData} />
         {items && items?.map((item) => <ItemCard data={item} />)}
       </div>
     </div>
