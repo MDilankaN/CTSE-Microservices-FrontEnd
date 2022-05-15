@@ -9,7 +9,7 @@ function itemCard({ data }) {
   const { items } = useSelector((store) => store?.items);
   console.log(data);
   return (
-    <div className="w-44 m-2 rounded-md border-2 border-blue-400 p-2 ">
+    <div className="w-full md:w-full rounded-md border-2 border-blue-400 p-2 ">
       <div>
         <img className="w-40" src={data?.img_url} />
       </div>
@@ -20,7 +20,7 @@ function itemCard({ data }) {
         <div className="text-base">Qun: {data?.stock}</div>
       </div>
 
-      <div className="text-center"><FontAwesomeIcon icon={faCartShopping}/></div>
+      <div className="text-right md:text-center"><FontAwesomeIcon icon={faCartShopping}/></div>
     </div>
   );
 }

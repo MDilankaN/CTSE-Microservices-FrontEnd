@@ -43,7 +43,7 @@ export default function Home() {
         <title>Sample Store</title>
       </Head>
       <Navbar />
-      <div className="m-auto">
+      <div className="mx-2 grid grid-cols-1 md:grid-cols-4 gap-2">
         <ItemCard data={sampleData} />
         {items && items?.map((item) => <ItemCard data={item} />)}
       </div>
