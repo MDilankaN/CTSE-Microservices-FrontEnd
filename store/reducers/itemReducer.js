@@ -1,7 +1,7 @@
 import { STORE_TYPES } from "../types";
 
 const initialState = {
-  items: {},
+  items: [],
   loading: true,
 };
 

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Navbar from '../Components/Navbar';
 import { useDispatch } from 'react-redux';
 import { USER_TYPES } from '../store/types';
+import { loginUser } from './api/hello';
 
 function login() {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function login() {
             submitData();
     }
 
-    const submitData = () =>{
+    const submitData = async () =>{
         if(emailError === '' && pwdError === '' ){
             console.log('Login method', email ,' ', pwd);
             //login method
@@ -38,18 +39,21 @@ function login() {
             //page forward
 
             let userdata ={
-                email:email,
+                username:email,
+                password:pwd
             }
-
-            dispatch({
-                type: USER_TYPES.SET_USER,
-                payload: {
-                  isAuthenticated: true,
-                  user: userdata,
-                },
-              });
-              window.location.href = '/';
-            
+            let status = await loginUser(userdata);
+            console.log(status.data);
+            if(status){
+                dispatch({
+                    type: USER_TYPES.SET_USER,
+                    payload: {
+                      isAuthenticated: true,
+                      user: status?.data,
+                    },
+                  });
+                //   window.location.href = '/profile';
+            }
         } else{
             return;
         }
