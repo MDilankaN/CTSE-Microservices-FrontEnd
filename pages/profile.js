@@ -81,7 +81,6 @@ function profile() {
               user: res?.data,
             },
           });
-        //   window.location.href = '/profile';
     }
     }
   };
@@ -91,14 +90,17 @@ function profile() {
     body.append("file", image);
     const value = await uploadImage(body);
     console.log(value);
+    setCreateObjectURL(value?.data?.file_url);
 
-    setCreateObjectURL(value?.data?.file_url)
-
+    //need to update user DB and dispatch
 
   };
 
   const deleteAccount = async ( ) =>{
     const res = await deleteUser(user?.user?.id);
+    if(res){
+      userLogout();
+    }
   }
   const userLogout = ( ) =>{
     dispatch({
@@ -112,12 +114,12 @@ function profile() {
   return (
     <>
       <Navbar />
-      <Notification
+      {/* <Notification
         Header={"Hello"}
         Message={"This is a message"}
         type={"hello"}
         Show={true}
-      />
+      /> */}
 
       <div className="m-auto justfy-center w-10/12  md:w-1/2">
         <div className="m-2 text-2xl">
