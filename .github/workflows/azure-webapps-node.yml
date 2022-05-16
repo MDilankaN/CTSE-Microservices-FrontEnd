@@ -18,9 +18,8 @@ jobs:
         name: Login to DockerHub
         run: docker login --username '${{secrets.DOCKERHUB_USERNAME}}' --password '${{secrets.DOCKERHUB_TOKEN}}'
       -
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: "{{defaultContext}}:mysubdir"
-          push: true
-          tags: user/ctse-assignment-microservices:'${{github.sha}}
+        name: Build docker image
+        run: docker build . --file Dockerfile --tag '${{secrets.DOCKER_LOGIN}}'/ctse-assignment-frontend:'${{github.sha}}'
+      -
+        name: push docker image
+        run: docker push '${{secrets.DOCKER_LOGIN}}'/ctse-assignment-frontend:'${{github.sha}}'
