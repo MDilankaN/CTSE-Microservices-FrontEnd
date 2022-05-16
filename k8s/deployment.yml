@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: githubactions-aks-demo
+spec:
+  selector:
+    matchLabels:
+      app: ctse-project-frontend
+  template:
+    metadata:
+      labels:
+        app: ctse-project-frontend
+    spec:
+      containers:
+        - name: ctse-project-frontend
+          image: mdilankan/ctse-project-frontend
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3000
