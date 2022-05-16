@@ -5,11 +5,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: ctse-project-frontend
+      app: ctse-assignment-frontend
   template:
     metadata:
       labels:
-        app: ctse-project-frontend
+        app: ctse-assignment-frontend
     spec:
       containers:
         - name: ctse-assignment-frontend

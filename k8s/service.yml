@@ -4,7 +4,7 @@ metadata:
   name: ctse-assignment-frontend
 spec:
   selector:
-    app: ctse-project-frontend
+    app: ctse-assignment-frontend
   type: LoadBalancer
   ports:
     - port: 3000
