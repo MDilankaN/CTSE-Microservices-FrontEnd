@@ -5,15 +5,15 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: ctse-project-frontend
+      app: ctse-assignment-frontend
   template:
     metadata:
       labels:
-        app: ctse-project-frontend
+        app: ctse-assignment-frontend
     spec:
       containers:
-        - name: ctse-project-frontend
-          image: mdilankan/ctse-project-frontend
+        - name: ctse-assignment-frontend
+          image: mdilankan/ctse-assignment-frontend
           resources:
             limits:
               memory: "512Mi"
