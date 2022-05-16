@@ -43,7 +43,6 @@ function login() {
                 password:pwd
             }
             let status = await loginUser(userdata);
-            console.log(status.data);
             if(status){
                 dispatch({
                     type: USER_TYPES.SET_USER,

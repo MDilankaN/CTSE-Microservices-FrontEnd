@@ -1,17 +1,26 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartShopping
-} from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { CART_TYPES } from "../store/types";
 
 function itemCard({ data }) {
-  const { items } = useSelector((store) => store?.items);
-  console.log(data);
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+
+  const addtoCart = () => {
+    dispatch({
+      type: CART_TYPES.SET_ITEMS,
+      payload: { cartItems: data},
+    });
+  };
+
   return (
     <div className="w-full md:w-full rounded-md border-2 border-blue-400 p-2 ">
-      <div>
-        <img className="w-40" src={data?.img_url} />
+      <div className="text-center">
+        <img className=" m-auto w-40" src={data?.img_url} />
       </div>
       <div className="text-xl">Name {data?.name}</div>
       <div className="text-xs">{data?.description}</div>
@@ -20,7 +29,14 @@ function itemCard({ data }) {
         <div className="text-base">Qun: {data?.stock}</div>
       </div>
 
-      <div className="text-right md:text-center"><FontAwesomeIcon icon={faCartShopping}/></div>
+      <div
+        className={
+          router?.pathname === "/cart" ? "hidden" : "text-right md:text-center"
+        }
+        onClick={() => addtoCart()}
+      >
+        <FontAwesomeIcon icon={faCartShopping} />
+      </div>
     </div>
   );
 }

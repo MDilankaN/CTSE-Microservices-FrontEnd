@@ -1,7 +1,7 @@
 import { CART_TYPES } from "../types";
 
 const initialState = {
-  items: [],
+  cartItems: [],
   loading: true,
 };
 
@@ -10,7 +10,7 @@ const cartReducer = (state = initialState, action) => {
     case CART_TYPES.SET_ITEMS:
       return {
         ...state,
-        items: action.payload,
+        cartItems: action.payload,
         loading: false,
       };
 
