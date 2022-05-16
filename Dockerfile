@@ -1,7 +1,26 @@
-FROM node:14-alpine
+
+FROM node:16-alpine AS deps
 WORKDIR /app
-COPY package.json .
-RUN npm install
+COPY package.json ./
+RUN yarn install 
+
+
+FROM node:16-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-EXPOSE 80
-CMD ["npm", "run", "start"]
+RUN yarn build
+
+FROM node:16-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV production
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
