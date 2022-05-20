@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function registerUser(userData) {
   const res = await axios
-    .post("http://localhost:8082/api/v1/useradd", userData)
+    .post("https://ctse-backend-api-manager.azure-api.net/user/api/v1/useradd", userData)
     .then(function (response) {
       if (response?.status === 200) {
         return true;
@@ -17,7 +17,7 @@ export async function registerUser(userData) {
 
 export async function loginUser(userData) {
   const res = await axios
-    .post("http://localhost:8082/api/v1/validate", userData)
+    .post("https://ctse-backend-api-manager.azure-api.net/user/api/v1/validate", userData)
     .then(function (response) {
       return response;
     })
@@ -30,7 +30,7 @@ export async function loginUser(userData) {
 
 export async function updateUser(id, userData) {
   const res = await axios
-    .put(`http://localhost:8082/api/v1/updateuser/${id}`, userData)
+    .put(`https://ctse-backend-api-manager.azure-api.net/user/api/v1/updateuser/${id}`, userData)
     .then(function (response) {
       return response;
     })
@@ -43,7 +43,7 @@ export async function updateUser(id, userData) {
 
 export async function deleteUser(id) {
   const res = await axios
-    .post(`http://localhost:8082/api/v1/updateuser/${id}`)
+    .post(`https://ctse-backend-api-manager.azure-api.net/user/api/v1/deleteuser/${id}`)
     .then(function (response) {
       return response;
     })
@@ -57,7 +57,7 @@ export async function deleteUser(id) {
 ///////////////////////////////////////============================== STORE ITEMS ==============================///////////////////////////////////////
 export async function getItems() {
   const res = await axios
-    .get("http://localhost:8081/api/v1/getStoreItem")
+    .get("https://ctse-backend-api-manager.azure-api.net/store/api/v1/getStoreItem")
     .then(function (response) {
       return response;
     })
